@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="UserControls.View.MainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Menu Background="Transparent" Foreground="White">
+        <Menu.ItemContainerStyle>
+            <Style TargetType="{x:Type MenuItem}">
+                <Setter Property="Margin" Value="0,0,10,0"/>
+                <Style.Triggers>
+                    <Trigger Property="MenuItem.IsMouseOver" Value="True">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Menu.ItemContainerStyle>
+        <MenuItem Header="Home" x:Name="m1">
+            <MenuItem.Icon>
+                <Image Source="/UserControls;component/Images/home.png" Stretch="None"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Modules" ItemsSource="{Binding AdapterModules}">
+            <MenuItem.Icon>
+                <Image Source="/UserControls;component/Images/modules.png" Stretch="None"/>
+            </MenuItem.Icon>
+            <MenuItem.ItemContainerStyle>
+                <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+                    <Setter Property="Header" Value="{Binding Name}"/>
+                    <Setter Property="Command" Value="{Binding ModuleViewDisplayer}"/>
+                    <Setter Property="CommandParameter" Value="{Binding}"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </MenuItem.ItemContainerStyle>
+        </MenuItem>
+        <MenuItem Header="Updates">
+            <MenuItem.Icon>
+                <Image Source="/UserControls;component/Images/updates.png" Stretch="None"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Tools">
+            <MenuItem.Icon>
+                <Image Source="/UserControls;component/Images/settings.png" Stretch="None"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Help">
+            <MenuItem.Icon>
+                <Image Source="/UserControls;component/Images/help.png" Stretch="None"/>
+            </MenuItem.Icon>
+        </MenuItem>
+    </Menu>
+</UserControl>
